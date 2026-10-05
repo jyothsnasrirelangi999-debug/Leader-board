@@ -1,0 +1,6 @@
+{
+  "name": "AIKYAM 2K26 Leaderboard",
+  "description": "Official live team leaderboard and scoring management system for AIKYAM 2K26 at SRKR Engineering College.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
