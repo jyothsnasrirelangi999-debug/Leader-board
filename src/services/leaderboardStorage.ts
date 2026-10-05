@@ -3,6 +3,34 @@ import { Team, ValidationResult } from '../types';
 const STORAGE_KEY = 'aikyam_2k26_leaderboard_teams_v1';
 const AUTH_KEY = 'aikyam_2k26_admin_auth_token';
 const CHANNEL_NAME = 'aikyam_leaderboard_channel';
+const CUSTOM_LOGO_KEY = 'aikyam_2k26_custom_logo_data';
+
+export function getStoredLogo(): string | null {
+  if (typeof window === 'undefined') return null;
+  try {
+    return localStorage.getItem(CUSTOM_LOGO_KEY);
+  } catch {
+    return null;
+  }
+}
+
+export function saveCustomLogo(dataUrl: string): void {
+  try {
+    localStorage.setItem(CUSTOM_LOGO_KEY, dataUrl);
+    notifySubscribers();
+  } catch (err) {
+    console.error('Failed to save logo to localStorage', err);
+  }
+}
+
+export function resetCustomLogo(): void {
+  try {
+    localStorage.removeItem(CUSTOM_LOGO_KEY);
+    notifySubscribers();
+  } catch (err) {
+    console.error('Failed to reset logo', err);
+  }
+}
 
 export const INITIAL_SAMPLE_TEAMS: Team[] = [
   { id: 'team-1', name: 'Team Phoenix', points: 850, updatedAt: 1728000000000 },

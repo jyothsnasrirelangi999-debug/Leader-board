@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useRef } from 'react';
 import { Team } from '../types';
 import { useLeaderboard } from '../context/LeaderboardContext';
 import {
@@ -15,6 +15,7 @@ import {
   PlusCircle,
   MinusCircle,
   HelpCircle,
+  Image as ImageIcon,
 } from 'lucide-react';
 
 interface AdminDashboardProps {
@@ -29,8 +30,28 @@ export const AdminDashboard: React.FC<AdminDashboardProps> = ({ onNavigateHome }
     deleteTeam,
     adjustPoints,
     resetTeams,
+    customLogo,
+    updateCustomLogo,
+    resetCustomLogo,
     lastUpdated,
   } = useLeaderboard();
+
+  const logoInputRef = useRef<HTMLInputElement>(null);
+
+  const handleLogoUpload = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const file = e.target.files?.[0];
+    if (file) {
+      const reader = new FileReader();
+      reader.onload = (event) => {
+        const result = event.target?.result as string;
+        if (result) {
+          updateCustomLogo(result);
+          showToast('success', 'Official logo updated successfully!');
+        }
+      };
+      reader.readAsDataURL(file);
+    }
+  };
 
   // Add Team form state
   const [showAddModal, setShowAddModal] = useState(false);
@@ -183,6 +204,36 @@ export const AdminDashboard: React.FC<AdminDashboardProps> = ({ onNavigateHome }
             <ExternalLink className="w-3.5 h-3.5 text-indigo-400" />
             <span>View Public Leaderboard</span>
           </button>
+
+          <input
+            type="file"
+            ref={logoInputRef}
+            onChange={handleLogoUpload}
+            accept="image/*"
+            className="hidden"
+          />
+          <button
+            onClick={() => logoInputRef.current?.click()}
+            className="flex items-center gap-1.5 px-3 py-2 text-xs font-semibold text-cyan-300 hover:text-white bg-cyan-950/40 border border-cyan-800/50 rounded-xl hover:bg-cyan-900/50 transition-colors"
+            title="Upload/Paste exact official event logo"
+          >
+            <ImageIcon className="w-3.5 h-3.5 text-cyan-400" />
+            <span>Upload Exact Logo</span>
+          </button>
+
+          {customLogo && (
+            <button
+              onClick={() => {
+                resetCustomLogo();
+                showToast('success', 'Restored default logo');
+              }}
+              className="flex items-center gap-1 px-2.5 py-2 text-xs font-medium text-slate-400 hover:text-slate-200 bg-slate-900/60 border border-slate-800 rounded-xl"
+              title="Reset to default logo"
+            >
+              <RotateCcw className="w-3 h-3" />
+              <span>Reset Logo</span>
+            </button>
+          )}
 
           <button
             onClick={() => setShowResetConfirm(true)}

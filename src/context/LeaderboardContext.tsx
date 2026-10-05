@@ -8,6 +8,9 @@ import {
   deleteTeam as deleteTeamStorage,
   adjustPoints as adjustPointsStorage,
   resetToSampleTeams as resetSampleStorage,
+  getStoredLogo,
+  saveCustomLogo,
+  resetCustomLogo as resetStoredLogo,
   isAdminAuthenticated as checkAuth,
   loginAdmin as loginStorage,
   logoutAdmin as logoutStorage,
@@ -17,6 +20,9 @@ interface LeaderboardContextType {
   teams: Team[];
   isLoading: boolean;
   isAdmin: boolean;
+  customLogo: string | null;
+  updateCustomLogo: (dataUrl: string) => void;
+  resetCustomLogo: () => void;
   refreshTeams: () => void;
   addTeam: (name: string, points: number) => { success: boolean; error?: string; team?: Team };
   updateTeam: (id: string, name: string, points: number) => { success: boolean; error?: string };
@@ -32,6 +38,7 @@ const LeaderboardContext = createContext<LeaderboardContextType | undefined>(und
 
 export const LeaderboardProvider: React.FC<{ children: React.ReactNode }> = ({ children }) => {
   const [teams, setTeams] = useState<Team[]>([]);
+  const [customLogo, setCustomLogo] = useState<string | null>(null);
   const [isLoading, setIsLoading] = useState<boolean>(true);
   const [isAdmin, setIsAdmin] = useState<boolean>(false);
   const [lastUpdated, setLastUpdated] = useState<Date>(new Date());
@@ -40,6 +47,7 @@ export const LeaderboardProvider: React.FC<{ children: React.ReactNode }> = ({ c
     const data = getStoredTeams();
     setTeams(data);
     setIsAdmin(checkAuth());
+    setCustomLogo(getStoredLogo());
     setLastUpdated(new Date());
   }, []);
 
@@ -61,6 +69,16 @@ export const LeaderboardProvider: React.FC<{ children: React.ReactNode }> = ({ c
       unsubscribe();
       clearInterval(interval);
     };
+  }, [loadData]);
+
+  const handleUpdateCustomLogo = useCallback((dataUrl: string) => {
+    saveCustomLogo(dataUrl);
+    loadData();
+  }, [loadData]);
+
+  const handleResetCustomLogo = useCallback(() => {
+    resetStoredLogo();
+    loadData();
   }, [loadData]);
 
   const handleAddTeam = useCallback((name: string, points: number) => {
@@ -119,6 +137,9 @@ export const LeaderboardProvider: React.FC<{ children: React.ReactNode }> = ({ c
         teams,
         isLoading,
         isAdmin,
+        customLogo,
+        updateCustomLogo: handleUpdateCustomLogo,
+        resetCustomLogo: handleResetCustomLogo,
         refreshTeams: loadData,
         addTeam: handleAddTeam,
         updateTeam: handleUpdateTeam,
