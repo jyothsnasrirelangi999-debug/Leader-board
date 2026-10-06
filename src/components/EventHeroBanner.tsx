@@ -75,9 +75,9 @@ export const EventHeroBanner: React.FC = () => {
               <Zap className="w-3.5 h-3.5 text-indigo-400" />
               SRKR Engineering College
             </span>
-            <span className="flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-emerald-950/40 border border-emerald-500/30 text-emerald-300 font-semibold">
-              <span className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span>
-              Live Automatic Scoreboard
+            <span className="flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-cyan-950/50 border border-cyan-500/30 text-cyan-300 font-semibold">
+              <span className="w-2 h-2 rounded-full bg-cyan-400 animate-pulse"></span>
+              Department of CSIT
             </span>
           </div>
         </div>

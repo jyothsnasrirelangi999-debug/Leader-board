@@ -32,3 +32,96 @@
   background: #334155;
 }
 
+/* Celebratory Dancing Badge Animations */
+@keyframes danceWinnerBadge {
+  0%, 100% {
+    transform: translateY(0) rotate(-2deg) scale(1);
+  }
+  25% {
+    transform: translateY(-8px) rotate(3.5deg) scale(1.07);
+  }
+  50% {
+    transform: translateY(-2px) rotate(-3deg) scale(1.03);
+  }
+  75% {
+    transform: translateY(-9px) rotate(2.5deg) scale(1.06);
+  }
+}
+
+@keyframes danceRunnerBadge {
+  0%, 100% {
+    transform: translateY(0) rotate(2deg) scale(1);
+  }
+  25% {
+    transform: translateY(-6px) rotate(-2.5deg) scale(1.05);
+  }
+  50% {
+    transform: translateY(-2px) rotate(2.5deg) scale(1.02);
+  }
+  75% {
+    transform: translateY(-7px) rotate(-1.5deg) scale(1.04);
+  }
+}
+
+@keyframes goldGlowSweep {
+  0%, 100% {
+    box-shadow: 0 0 25px rgba(245, 158, 11, 0.35), 0 0 50px rgba(234, 179, 8, 0.15);
+  }
+  50% {
+    box-shadow: 0 0 45px rgba(245, 158, 11, 0.55), 0 0 90px rgba(234, 179, 8, 0.3);
+  }
+}
+
+@keyframes silverGlowSweep {
+  0%, 100% {
+    box-shadow: 0 0 20px rgba(148, 163, 184, 0.25), 0 0 40px rgba(56, 189, 248, 0.12);
+  }
+  50% {
+    box-shadow: 0 0 35px rgba(148, 163, 184, 0.45), 0 0 65px rgba(56, 189, 248, 0.22);
+  }
+}
+
+.animate-dance-winner {
+  animation: danceWinnerBadge 2.2s ease-in-out infinite;
+}
+
+.animate-dance-runner {
+  animation: danceRunnerBadge 2.6s ease-in-out infinite;
+}
+
+.animate-gold-glow {
+  animation: goldGlowSweep 3s ease-in-out infinite;
+}
+
+.animate-silver-glow {
+  animation: silverGlowSweep 3.5s ease-in-out infinite;
+}
+
+/* Up and Down Dancing Crowns matching reference picture */
+@keyframes crownDanceWinner {
+  0%, 100% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-16px);
+  }
+}
+
+@keyframes crownDanceRunner {
+  0%, 100% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-12px);
+  }
+}
+
+.animate-crown-winner {
+  animation: crownDanceWinner 2.1s ease-in-out infinite;
+}
+
+.animate-crown-runner {
+  animation: crownDanceRunner 2.4s ease-in-out infinite;
+}
+
+

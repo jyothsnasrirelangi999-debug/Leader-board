@@ -13,32 +13,32 @@ export const Header: React.FC<HeaderProps> = ({ currentRoute, onNavigate }) => {
   const { isAdmin, logout } = useLeaderboard();
 
   return (
-    <header className="sticky top-0 z-50 backdrop-blur-md bg-[#080d22]/90 border-b border-slate-800/80 shadow-lg shadow-black/20">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
-        {/* Left: SRKR College Official Logo & Identity */}
+    <header className="sticky top-0 z-50 backdrop-blur-md bg-[#080d22]/95 border-b border-slate-800/80 shadow-lg shadow-black/30">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-3 min-h-[90px] sm:min-h-[104px] flex items-center justify-between gap-4">
+        {/* Left: SRKR College Official Logo & Identity (Significantly enlarged) */}
         <button
           onClick={() => onNavigate('/')}
-          className="flex items-center gap-3.5 group text-left transition-opacity hover:opacity-95 focus:outline-none"
+          className="flex items-center gap-3.5 sm:gap-4 group text-left transition-opacity hover:opacity-95 focus:outline-none cursor-pointer"
           title="Return to Home"
         >
-          <div className="relative flex items-center justify-center p-1 bg-white/5 rounded-xl border border-white/10 backdrop-blur-sm shadow-inner group-hover:border-indigo-500/40 transition-colors">
-            {/* SRKR Official Emblem preserving natural aspect ratio */}
+          <div className="relative flex items-center justify-center p-2 sm:p-2.5 bg-white/10 rounded-2xl border border-white/20 backdrop-blur-md shadow-lg shadow-black/20 group-hover:border-indigo-400/60 transition-colors shrink-0">
+            {/* SRKR Official Emblem preserving natural aspect ratio with enlarged dimensions */}
             <img
               src={srkrLogo || '/srkr-logo.png'}
               alt="SRKR Engineering College Logo"
-              className="h-13 w-auto max-h-13 object-contain drop-shadow-md transition-transform duration-300 group-hover:scale-105"
+              className="h-16 sm:h-20 md:h-22 w-auto max-h-22 object-contain drop-shadow-lg transition-transform duration-300 group-hover:scale-105"
             />
           </div>
-          <div className="hidden sm:flex flex-col">
-            <span className="text-sm font-bold tracking-tight text-white group-hover:text-indigo-200 transition-colors">
+          <div className="flex flex-col justify-center">
+            <span className="text-base sm:text-xl md:text-2xl lg:text-3xl font-black tracking-tight text-white group-hover:text-cyan-300 transition-colors drop-shadow-sm leading-tight">
               S.R.K.R. ENGINEERING COLLEGE
             </span>
-            <span className="text-xs text-slate-400 font-medium tracking-wide flex items-center gap-1.5">
-              <span>(Autonomous)</span>
-              <span className="w-1 h-1 rounded-full bg-slate-500"></span>
+            <span className="text-xs sm:text-sm text-slate-300 font-semibold tracking-wide flex items-center gap-1.5 sm:gap-2 mt-1">
+              <span className="text-slate-200">(Autonomous)</span>
+              <span className="w-1 h-1 rounded-full bg-slate-400"></span>
               <span>Bhimavaram</span>
-              <span className="w-1 h-1 rounded-full bg-slate-500"></span>
-              <span className="text-indigo-400 font-semibold">ESTD: 1980</span>
+              <span className="w-1 h-1 rounded-full bg-slate-400"></span>
+              <span className="text-indigo-400 font-bold">ESTD: 1980</span>
             </span>
           </div>
         </button>
