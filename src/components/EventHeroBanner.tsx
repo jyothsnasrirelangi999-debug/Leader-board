@@ -1,5 +1,5 @@
 import React, { useRef } from 'react';
-import { Zap } from 'lucide-react';
+import { ArrowLeft } from 'lucide-react';
 import { useLeaderboard } from '../context/LeaderboardContext';
 import aikyamLogo from '../assets/aikyam-logo.jpg';
 
@@ -72,7 +72,7 @@ export const EventHeroBanner: React.FC = () => {
           {/* Subtext: Leaderboard & College Info */}
           <div className="pt-2 flex flex-wrap items-center justify-center lg:justify-start gap-3 text-xs sm:text-sm text-slate-300">
             <span className="flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-indigo-950/50 border border-indigo-500/30 text-indigo-300 font-semibold">
-              <Zap className="w-3.5 h-3.5 text-indigo-400" />
+              <ArrowLeft className="w-3.5 h-3.5 text-indigo-400" />
               SRKR Engineering College
             </span>
             <span className="flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-cyan-950/50 border border-cyan-500/30 text-cyan-300 font-semibold">

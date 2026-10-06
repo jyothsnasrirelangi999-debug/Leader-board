@@ -97,31 +97,58 @@
   animation: silverGlowSweep 3.5s ease-in-out infinite;
 }
 
-/* Up and Down Dancing Crowns matching reference picture */
-@keyframes crownDanceWinner {
+/* Up and Down & To and Fro Floating Badge Animations matching Badges.jpeg */
+@keyframes badgeFloatSwayWinner {
   0%, 100% {
-    transform: translateY(0px);
+    transform: translateY(0px) rotate(-1.5deg);
+  }
+  25% {
+    transform: translateY(-7px) rotate(2deg);
   }
   50% {
-    transform: translateY(-16px);
+    transform: translateY(3px) rotate(0deg);
+  }
+  75% {
+    transform: translateY(-4px) rotate(-2deg);
   }
 }
 
-@keyframes crownDanceRunner {
+@keyframes badgeFloatSwayRunner {
   0%, 100% {
-    transform: translateY(0px);
+    transform: translateY(0px) rotate(1.5deg);
+  }
+  25% {
+    transform: translateY(-6px) rotate(-2deg);
   }
   50% {
-    transform: translateY(-12px);
+    transform: translateY(3px) rotate(0.5deg);
+  }
+  75% {
+    transform: translateY(-4px) rotate(2deg);
   }
 }
 
-.animate-crown-winner {
-  animation: crownDanceWinner 2.1s ease-in-out infinite;
+@keyframes badgeAuraPulse {
+  0%, 100% {
+    transform: scale(0.95);
+    opacity: 0.65;
+  }
+  50% {
+    transform: scale(1.18);
+    opacity: 0.95;
+  }
 }
 
-.animate-crown-runner {
-  animation: crownDanceRunner 2.4s ease-in-out infinite;
+.animate-badge-winner {
+  animation: badgeFloatSwayWinner 3.2s ease-in-out infinite;
+}
+
+.animate-badge-runner {
+  animation: badgeFloatSwayRunner 3.5s ease-in-out infinite;
+}
+
+.animate-badge-aura {
+  animation: badgeAuraPulse 2.4s ease-in-out infinite;
 }
 
 
