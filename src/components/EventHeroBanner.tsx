@@ -1,5 +1,4 @@
 import React, { useRef } from 'react';
-import { ArrowLeft } from 'lucide-react';
 import { useLeaderboard } from '../context/LeaderboardContext';
 import aikyamLogo from '../assets/aikyam-logo.jpg';
 
@@ -69,15 +68,11 @@ export const EventHeroBanner: React.FC = () => {
             </div>
           </div>
 
-          {/* Subtext: Leaderboard & College Info */}
-          <div className="pt-2 flex flex-wrap items-center justify-center lg:justify-start gap-3 text-xs sm:text-sm text-slate-300">
-            <span className="flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-indigo-950/50 border border-indigo-500/30 text-indigo-300 font-semibold">
-              <ArrowLeft className="w-3.5 h-3.5 text-indigo-400" />
-              SRKR Engineering College
-            </span>
-            <span className="flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-cyan-950/50 border border-cyan-500/30 text-cyan-300 font-semibold">
-              <span className="w-2 h-2 rounded-full bg-cyan-400 animate-pulse"></span>
-              Department of CSIT
+          {/* Subtext: Department Info - Increased Font Size */}
+          <div className="pt-2 flex flex-wrap items-center justify-center lg:justify-start gap-3">
+            <span className="inline-flex items-center gap-2.5 px-5 py-2 rounded-xl bg-cyan-950/60 border border-cyan-400/40 text-cyan-300 text-base sm:text-lg md:text-xl font-bold tracking-wide shadow-md shadow-cyan-950/60 backdrop-blur-sm">
+              <span className="w-2.5 h-2.5 rounded-full bg-cyan-400 animate-pulse shadow-[0_0_10px_rgba(34,211,238,0.9)]"></span>
+              Department of CSIT &amp; CSD
             </span>
           </div>
         </div>
